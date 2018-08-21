@@ -11,11 +11,16 @@ type playerInit = {
 
 type game = {
   id: string,
-  players: playerInit,
-  lactPlayer: string,
+  players: [playerInit],
+  actPlayer: string,
 };
 
 type user = {
   id: string,
   name: string,
+};
+
+type FuncState = {
+  Success,
+  Failed,
 };
