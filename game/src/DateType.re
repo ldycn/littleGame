@@ -11,7 +11,7 @@ type playerInit = {
 
 type game = {
   id: string,
-  players: [playerInit],
+  players: array(playerInit),
   actPlayer: string,
 };
 
@@ -20,7 +20,6 @@ type user = {
   name: string,
 };
 
-type FuncState = {
-  Success,
-  Failed,
-};
+type funcState = 
+  | Success
+  | Failed;
