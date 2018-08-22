@@ -2,8 +2,6 @@
 'use strict';
 
 
-console.log("Hello, BuckleScript and Reason!");
-
 function createUser() {
   return /* record */[
           /* id */"a",
@@ -12,4 +10,4 @@ function createUser() {
 }
 
 exports.createUser = createUser;
-/*  Not a pure module */
+/* No side effect */
