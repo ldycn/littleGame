@@ -18,6 +18,10 @@ type user = {
   name: string,
 }
 
+type shoot = 
+  | Miss
+  | shot
+
 type funcState = 
   | Success
   | Failed
