@@ -3,50 +3,63 @@
 
 var $$Array = require("bs-platform/lib/js/array.js");
 var Caml_array = require("bs-platform/lib/js/caml_array.js");
+var Caml_format = require("bs-platform/lib/js/caml_format.js");
+
+var maxGameId = ["-1"];
+
+var overGamesId = [/* [] */0];
 
 var games = Caml_array.caml_make_vect(1000, /* None */0);
 
 function createGame(id) {
-  return /* record */[
-          /* id */"0",
-          /* players : array */[
-            /* record */[
-              /* id */id,
-              /* position : tuple */[
-                0.1,
-                0.1
-              ],
-              /* shootSpeed */0.3,
-              /* rotateVec */0.3,
-              /* rotataRange : tuple */[
-                0.0,
-                0.75
-              ],
-              /* boundingBox : tuple */[
-                0.05,
-                0.05
-              ]
-            ],
-            /* record */[
-              /* id */"100001",
-              /* position : tuple */[
-                0.1,
-                0.1
-              ],
-              /* shootSpeed */0.3,
-              /* rotateVec */0.3,
-              /* rotataRange : tuple */[
-                0.0,
-                0.75
-              ],
-              /* boundingBox : tuple */[
-                0.05,
-                0.05
-              ]
-            ]
-          ],
-          /* actPlayer */id
-        ];
+  var match = overGamesId[0];
+  if (match) {
+    overGamesId[0] = match[1];
+    return /* record */[
+            /* id */match[0],
+            /* players : array */[/* record */[
+                /* id */id,
+                /* position : tuple */[
+                  0.1,
+                  0.1
+                ],
+                /* shootSpeed */0.3,
+                /* rotateVec */0.3,
+                /* rotataRange : tuple */[
+                  0.0,
+                  0.75
+                ],
+                /* boundingBox : tuple */[
+                  0.05,
+                  0.05
+                ]
+              ]],
+            /* actPlayer */id
+          ];
+  } else {
+    maxGameId[0] = String(Caml_format.caml_int_of_string(maxGameId[0]) + 1 | 0);
+    return /* record */[
+            /* id */maxGameId[0],
+            /* players : array */[/* record */[
+                /* id */id,
+                /* position : tuple */[
+                  0.1,
+                  0.1
+                ],
+                /* shootSpeed */0.3,
+                /* rotateVec */0.3,
+                /* rotataRange : tuple */[
+                  0.0,
+                  0.75
+                ],
+                /* boundingBox : tuple */[
+                  0.05,
+                  0.05
+                ]
+              ]],
+            /* actPlayer */id
+          ];
+  }
 }
 
 function initArrNone(id, game) {
@@ -69,9 +82,8 @@ function endGame(id) {
   return true;
 }
 
-var gameId = "0";
-
-exports.gameId = gameId;
+exports.maxGameId = maxGameId;
+exports.overGamesId = overGamesId;
 exports.games = games;
 exports.createGame = createGame;
 exports.initArrNone = initArrNone;

@@ -20,7 +20,8 @@ type user = {
 
 type shoot = 
   | Miss
-  | shot
+  | Shot
+  | HeadShot
 
 type funcState = 
   | Success
