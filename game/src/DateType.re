@@ -5,24 +5,24 @@ type playerInit = {
   rotateVec: float,
   rotataRange: (float, float),
   boundingBox: (float, float),
-}
+};
 
 type game = {
-  id: string,
+  id: int,
   players: array(playerInit),
   actPlayer: string,
-}
+};
 
 type user = {
   id: string,
   name: string,
-}
+};
 
 type shoot = 
   | Miss
   | Shot
-  | HeadShot
+  | HeadShot;
 
 type funcState = 
   | Success
-  | Failed
+  | Failed;

@@ -1,6 +1,6 @@
 let getYMove = (time, initSpeed, gravity) => {
   initSpeed *. time -. (0.5 *. gravity *. time *. time)
-}
+};
 
 let pai = 3.1415;
 
@@ -11,7 +11,7 @@ let getShootResult = (mePos, targetPosBox, shootSpeed, shootArc, gravity): DateT
   let (speedX, speedY) = (sin(rad) *. shootSpeed, cos(rad) *. shootSpeed);
   Js.log((speedX, speedY));
   let ((targetX1, targetX2), (targetYLow, targetYHigh)) = targetPosBox;
-  let (mePosX, mePosY) = mePos
+  let (mePosX, mePosY) = mePos;
   let (timeRange1, timeRange2) = ((targetX1 -. mePosX) /. speedX, (targetX2 -. mePosX) /. speedX);
   Js.log((timeRange1, timeRange2));
   let (yRangeHigh, yRangeLow) = (mePosY +. getYMove(timeRange1, speedY, gravity), mePosY +. getYMove(timeRange2, speedY, gravity));
@@ -21,7 +21,7 @@ let getShootResult = (mePos, targetPosBox, shootSpeed, shootArc, gravity): DateT
   } else {
     Shot
   }
-}
+};
 
 let test = getShootResult((0.1, 0.1), ((0.8, 0.9), (0.1, 0.2)), 0.3, 45.0 , 0.2);
 
