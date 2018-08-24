@@ -45,10 +45,10 @@ let endGame = (id) => {
 
 /* test */
 
-/* createGame("123d");
-createGame("123d");
-createGame("123d");
-createGame("123d");
+/* createGame(315);
+createGame(254);
+createGame(151);
+createGame(2235);
 Js.log(games); */
 
 /* endGame(0);
@@ -57,19 +57,19 @@ endGame(2);
 endGame(3);
 Js.log(games); */
 
-/* createGame("123d");
-createGame("123d");
+/* createGame(6346);
+createGame(7454);
 endGame(0);
-createGame("1asf");
+createGame(568);
 Js.log(games); */
 
-/* createGame("123d");
-createGame("123d");
+/* createGame(679);
+createGame(596);
 endGame(0);
-createGame("1asf");
-createGame("123d");
-createGame("123d");
+createGame(563);
+createGame(53768);
+createGame(484);
 endGame(0);
 endGame(1);
-createGame("asfasf");
+createGame(468);
 Js.log(games); */

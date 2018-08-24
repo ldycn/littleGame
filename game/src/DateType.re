@@ -1,5 +1,5 @@
 type playerInit = {
-  id: string,
+  id: int,
   position: (float, float),
   shootSpeed: float,
   rotateVec: float,
@@ -10,14 +10,20 @@ type playerInit = {
 type game = {
   id: int,
   players: array(playerInit),
-  actPlayer: string,
+  actPlayer: int,
 };
 
 type user = {
-  id: string,
+  id: int,
   name: string,
 };
 
+type code = 
+  | Error
+  | Success;
+
+type errorCode =
+  | Unknown
 type shoot = 
   | Miss
   | Shot
@@ -26,3 +32,12 @@ type shoot =
 type funcState = 
   | Success
   | Failed;
+  
+type msg =
+  | CreateGame(int)
+  | None;
+
+type res =
+  | CreateGameSuccess(game)
+  | CreateGameFailed(code)
+  | None

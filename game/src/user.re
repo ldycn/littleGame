@@ -1,4 +1,4 @@
 let createUser = (): DateType.user => {
-    id: "a",
+    id: 1,
     name: "asd",
 }
