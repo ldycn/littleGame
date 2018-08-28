@@ -40,4 +40,9 @@ type msg =
 type res =
   | CreateGameSuccess(game)
   | CreateGameFailed(code)
-  | None
+  | None;
+
+/* type arr('a) = array('a); */
+type arrFind('a) = 
+  | Ture('a)
+  | False;

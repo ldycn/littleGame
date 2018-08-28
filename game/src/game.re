@@ -1,27 +1,10 @@
-/* 最大的gameId，没有没回收的gameId之后使用maxGameId + 1作为Id */
-let maxGameId = ref(-1);
-
-/* 游戏完毕之后回收的gameId */
-let overGamesId = ref([]);
+let (getId, recycleId) = ManageId.initIdManagement();
 
 /* 桌详细信息 */
 let games: array(option(DateType.game)) = Array.make(10, None);
 
-let setNewGameId = () => {
-  switch (overGamesId^) {
-    | [] => {
-      maxGameId := maxGameId^ + 1;
-      maxGameId^;
-    }
-    | [gameId, ...rest] => {
-      overGamesId := rest;
-      gameId;
-    }
-  }
-};
-
 let createGame = (id): DateType.game => {
-  let gameId = setNewGameId();
+  let gameId = getId();
   let newGame: DateType.game = {
     id: gameId,
     actPlayer: id,
@@ -39,8 +22,8 @@ let createGame = (id): DateType.game => {
 };
 
 let endGame = (id) => {
+  recycleId(id);
   games[id] = None;
-  overGamesId := [id, ...overGamesId^];
 };
 
 /* test */
