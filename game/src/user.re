@@ -2,35 +2,38 @@ let maxId = ref(-1);
 
 let getId = () => {
   maxId := maxId^ + 1;
-  maxId
+  maxId;
 }
 let user: array(option(DateType.user)) = Array.make(10, None);
 
-let find = (func, arr: array('a)): DateType.arrFind('a) => {
-  open DateType;
-  let a = ref(False);
-  Array.map((v) => {
-    if (func(v)) {
-      a := Ture(v);
-    } else {
-      a := False
-    };
+
+let isExsistUser = (thirdPartId): option(DateType.user) => {
+  let result = Arr.findO(user, (user) => {
+    switch (user) {
+      | Some(user) => {
+        if (user.thirdPartId === thirdPartId) {
+          true;
+        } else {
+          false;
+        }
+      }
+      | None => false
+    }
   });
-  a^;
 }
 
-/* let isExsistUser = () => {
-  Array.map
-} */
-/* let login = (thirdPartId): DateType.user => {
-  if (isExsistUser(thirdPartId)) {
-
-  } else {
-    let id = getId();
-    {
-      id,
-      thirdPartId,
-      name: "游客" ++ string_of_int(id),
+let login = (thirdPartId): DateType.user => {
+  switch (isExsistUser(thirdPartId)) {
+    | Some(user) => user
+    | None => {
+      let id = getId();
+      let newUser = {
+        id,
+        thirdPartId,
+        name: "游客" ++ string_of_int(id),
+      };
+      user[id] = newUser;
+      newUser;
     }
   }
-} */
+}

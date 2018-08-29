@@ -16,6 +16,7 @@ type game = {
 type user = {
   id: int,
   name: string,
+  thirdPartId: string,
 };
 
 type code = 
@@ -41,8 +42,3 @@ type res =
   | CreateGameSuccess(game)
   | CreateGameFailed(code)
   | None;
-
-/* type arr('a) = array('a); */
-type arrFind('a) = 
-  | Ture('a)
-  | False;
