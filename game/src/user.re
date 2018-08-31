@@ -22,7 +22,7 @@ let isExsistUser = (thirdPartId): option(DateType.user) => {
   });
 }
 
-let login = (thirdPartId): DateType.user => {
+let login = (thirdPartId, ws): DateType.user => {
   switch (isExsistUser(thirdPartId)) {
     | Some(user) => user
     | None => {

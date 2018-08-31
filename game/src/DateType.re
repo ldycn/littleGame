@@ -13,10 +13,16 @@ type game = {
   actPlayer: int,
 };
 
+type onlineState = 
+  | OnLine
+  | UnKnown
+  | OffLine
+
 type user = {
   id: int,
   name: string,
   thirdPartId: string,
+  onLineState, 
 };
 
 type code = 
